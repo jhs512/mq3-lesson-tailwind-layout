@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "id": "tailwind-layout",
+  "revision": "v1.0.0",
+  "title": "Tailwind로 반응형 레이아웃 만들기",
+  "description": "유틸리티를 조합하고 실제 계산된 스타일을 확인해요.",
+  "sources": [
+    "https://slog.gg/p/14149"
+  ],
+  "sections": [
+    {
+      "id": "reading-1",
+      "title": "유틸리티가 바꾸는 CSS 읽기",
+      "body": "Tailwind는 작은 CSS 클래스를 조합해요.\nflex는 display, gap은 항목 간격을 정해요.\n먼저 flex 하나를 적용하고 배치를 확인하세요.\n다음에 gap-4를 추가해 간격을 비교해요.\nmd: 접두사는 해당 화면 폭부터 적용돼요.\n이 수업은 Tailwind 4의 브라우저 빌드를 사용해요.\n앱은 고정한 패키지를 로컬에서 불러와요.\n`<!-- tailwind -->` 위치는 그대로 두세요.\n조심하세요. 비슷한 클래스가 늘 같은 CSS는 아니에요.\n개발자 도구의 계산된 스타일을 확인하세요.\n제품 배포에서는 빌드 단계의 CSS 생성을 검토해요.\n"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "tailwind-card",
+      "title": "상태 배지와 카드 만들기",
+      "goal": "article#lesson에 p-4, rounded-lg를 적용하세요.\n제목은 h2 `자바 기초`예요.\nspan.badge에 `필수`와 font-bold를 적용하세요.\n버튼 `시작`에는 px-4 py-2를 적용하세요.",
+      "language": "web",
+      "entry_file": "index.html",
+      "starter_code": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<!-- tailwind -->\n<style></style>\n<body>\n<article id=\"lesson\"></article>\n</body></html>\n",
+      "solution": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<!-- tailwind -->\n<style></style>\n<body>\n<!-- 여백과 모서리를 유틸리티로 지정해요. -->\n<article id=\"lesson\" class=\"p-4 rounded-lg border\">\n  <h2>자바 기초</h2><span class=\"badge font-bold\">필수</span>\n  <!-- 버튼은 실제 버튼 태그로 남겨요. -->\n  <button class=\"px-4 py-2\">시작</button>\n</article>\n</body></html>\n",
+      "files": {},
+      "tests": [],
+      "web_checks": [
+        {
+          "kind": "text",
+          "selector": "h2",
+          "pattern": "^자바 기초$"
+        },
+        {
+          "kind": "css",
+          "selector": "#lesson",
+          "property": "paddingTop",
+          "value": "16px"
+        },
+        {
+          "kind": "css",
+          "selector": "#lesson",
+          "property": "borderRadius",
+          "value": "8px"
+        },
+        {
+          "kind": "css",
+          "selector": ".badge",
+          "property": "fontWeight",
+          "value": "700"
+        },
+        {
+          "kind": "css",
+          "selector": "button",
+          "property": "paddingLeft",
+          "value": "16px"
+        },
+        {
+          "kind": "css",
+          "selector": "button",
+          "property": "paddingTop",
+          "value": "8px"
+        }
+      ],
+      "mutations": [],
+      "required": true,
+      "narration": [
+        {
+          "action": "say",
+          "target": "problem",
+          "text": "article#lesson에 p-4, rounded-lg를 적용하세요.\n제목은 h2 `자바 기초`예요.\nspan.badge에 `필수`와 font-bold를 적용하세요.\n버튼 `시작`에는 px-4 py-2를 적용하세요."
+        },
+        {
+          "action": "say",
+          "target": "editor",
+          "text": "조심하세요. 실행 성공과 모든 검사 통과는 달라요. 단계마다 결과를 확인해요."
+        },
+        {
+          "action": "set_code",
+          "code": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<!-- tailwind -->\n<style></style>\n<body><!-- mq3-build-here --></body></html>\n",
+          "say": "문서와 스타일을 먼저 준비해요. 본문은 작은 조각으로 채워요."
+        },
+        {
+          "action": "run"
+        },
+        {
+          "action": "say",
+          "target": "output",
+          "text": "본문이 비어 있는 화면이에요. 요소와 이벤트를 차례로 넣어요."
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": "\n<!-- 여백과 모서리를 유틸리티로 지정해요. -->\n<article id=\"lesson\" class=\"p-4 rounded-lg border\">\n<!-- mq3-build-here -->"
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": "  <h2>자바 기초</h2><span class=\"badge font-bold\">필수</span>\n  <!-- 버튼은 실제 버튼 태그로 남겨요. -->\n  <button class=\"px-4 py-2\">시작</button>\n<!-- mq3-build-here -->"
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": "</article>\n<!-- mq3-build-here -->"
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": ""
+        },
+        {
+          "action": "run"
+        },
+        {
+          "action": "say",
+          "target": "output",
+          "text": "완성한 화면을 확인하세요. 입력과 버튼도 직접 사용해보세요."
+        }
+      ],
+      "source_hash": "205ba2cac10cf16f0e7349da081a1799ec223efe19203861df1b71b7f4882b6d"
+    },
+    {
+      "id": "tailwind-responsive",
+      "title": "작으면 세로, 넓으면 가로",
+      "goal": "nav#menu에 flex flex-col md:flex-row gap-4를 적용하세요.\n버튼 세 개를 넣으세요.",
+      "language": "web",
+      "entry_file": "index.html",
+      "starter_code": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<!-- tailwind -->\n<style></style>\n<body>\n<nav id=\"menu\"></nav>\n</body></html>\n",
+      "solution": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<!-- tailwind -->\n<style></style>\n<body>\n<!-- 기본 방향은 세로이고 md부터 가로로 바꿔요. -->\n<nav id=\"menu\" class=\"flex flex-col md:flex-row gap-4\">\n<button>학습</button><button>복습</button><button>진도</button>\n</nav>\n</body></html>\n",
+      "files": {},
+      "tests": [],
+      "web_checks": [
+        {
+          "kind": "count",
+          "selector": "button",
+          "value": 3
+        },
+        {
+          "kind": "viewport",
+          "width": 600,
+          "height": 800
+        },
+        {
+          "kind": "css",
+          "selector": "#menu",
+          "property": "flexDirection",
+          "value": "column"
+        },
+        {
+          "kind": "css",
+          "selector": "#menu",
+          "property": "gap",
+          "value": "16px"
+        },
+        {
+          "kind": "viewport",
+          "width": 1000,
+          "height": 800
+        },
+        {
+          "kind": "css",
+          "selector": "#menu",
+          "property": "flexDirection",
+          "value": "row"
+        }
+      ],
+      "mutations": [],
+      "required": true,
+      "narration": [
+        {
+          "action": "say",
+          "target": "problem",
+          "text": "nav#menu에 flex flex-col md:flex-row gap-4를 적용하세요.\n버튼 세 개를 넣으세요."
+        },
+        {
+          "action": "say",
+          "target": "editor",
+          "text": "조심하세요. 실행 성공과 모든 검사 통과는 달라요. 단계마다 결과를 확인해요."
+        },
+        {
+          "action": "set_code",
+          "code": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<!-- tailwind -->\n<style></style>\n<body><!-- mq3-build-here --></body></html>\n",
+          "say": "문서와 스타일을 먼저 준비해요. 본문은 작은 조각으로 채워요."
+        },
+        {
+          "action": "run"
+        },
+        {
+          "action": "say",
+          "target": "output",
+          "text": "본문이 비어 있는 화면이에요. 요소와 이벤트를 차례로 넣어요."
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": "\n<!-- 기본 방향은 세로이고 md부터 가로로 바꿔요. -->\n<nav id=\"menu\" class=\"flex flex-col md:flex-row gap-4\">\n<!-- mq3-build-here -->"
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": "<button>학습</button><button>복습</button><button>진도</button>\n</nav>\n<!-- mq3-build-here -->"
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": ""
+        },
+        {
+          "action": "run"
+        },
+        {
+          "action": "say",
+          "target": "output",
+          "text": "완성한 화면을 확인하세요. 입력과 버튼도 직접 사용해보세요."
+        }
+      ],
+      "source_hash": "ef6b9586a7a8cd786d8c89f8fc285ff33f2eaa936faa7eb5f6860e774aceb6cf"
+    }
+  ]
+}
